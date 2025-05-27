@@ -1,0 +1,22 @@
+# Ideal sensor to measure the acceleration of `flange_b` relative to `flange_a`
+component RelativeAccelerationSensor
+  extends PartialRelativeSensor
+  # Relative acceleration of `flange_b` relative to `flange_a` as output signal
+  a_rel = RealOutput() [{
+    "Dyad": {
+      "placement": {"icon": {"x1": 450, "y1": 950, "x2": 550, "y2": 1050, "rot": 90}}
+    }
+  }]
+  # Relative position of `flange_b` relative to `flange_a`
+  variable s_rel::Distance
+  # Relative velocity of `flange_b` relative to `flange_a`
+  variable v_rel::Velocity
+relations
+  s_rel = flange_b.s-flange_a.s
+  v_rel = der(s_rel)
+  a_rel = der(v_rel)
+  0 = flange_a.f
+metadata {
+  "Dyad": {"icons": {"default": "dyad://TranslationalComponents/RelativeSensor.svg"}}
+}
+end

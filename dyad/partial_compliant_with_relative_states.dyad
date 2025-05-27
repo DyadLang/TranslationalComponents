@@ -1,0 +1,17 @@
+# Base model for the compliant connection of two translational 1D shaft flanges
+# where the relative position and relative velocities are used as states
+partial component PartialCompliantWithRelativeStates
+  flange_a = Flange() [{"Dyad": {"placement": {"icon": {"x1": -50, "y1": 450, "x2": 50, "y2": 550}}}}]
+  flange_b = Flange() [{"Dyad": {"placement": {"icon": {"x1": 950, "y1": 450, "x2": 1050, "y2": 550}}}}]
+  # Relative distance between `flange_b` and `flange_a`
+  variable s_rel::Distance
+  # Relative velocity between `flange_b` and `flange_a`
+  variable v_rel::Velocity
+  # Forces between the flanges
+  variable f::Dyad.Force
+relations
+  s_rel = flange_b.s-flange_a.s
+  v_rel = der(s_rel)
+  flange_b.f = f
+  flange_a.f = -f
+end

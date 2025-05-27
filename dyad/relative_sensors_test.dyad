@@ -1,0 +1,38 @@
+# Tests for Position, Speed and Acceleration Relative Sensors
+test component RelativeSensorsTest
+  body1 = Mass(m=1, L=0)
+  body2 = Mass(m=1, L=0)
+  force1 = Force()
+  force2 = Force()
+  fixed = Fixed()
+  constant1 = BlockComponents.Constant(k=1)
+  constant2 = BlockComponents.Constant(k=10)
+  relative_speed_sensor = RelativeSpeedSensor()
+  relative_position_sensor = RelativePositionSensor()
+  relative_acceleration_sensor = RelativeAccelerationSensor()
+relations
+  connect(constant1.y, force1.f)
+  connect(constant2.y, force2.f)
+  connect(fixed.flange, force1.flange_a, force2.flange_a)
+  connect(force1.flange_b, body1.flange_a)
+  connect(force2.flange_b, body2.flange_a)
+  connect(body1.flange_b, relative_speed_sensor.flange_a, relative_position_sensor.flange_a, relative_acceleration_sensor.flange_a)
+  connect(body2.flange_b, relative_speed_sensor.flange_b, relative_position_sensor.flange_b, relative_acceleration_sensor.flange_b)
+metadata {
+  "Dyad": {
+    "tests": {
+      "case1": {
+        "stop": 5,
+        "initial": {"body1.s": 0, "body2.s": 0},
+        "expect": {
+          "final": {
+            "relative_position_sensor.s_rel": 112.5,
+            "relative_speed_sensor.v_rel": 44.99999999,
+            "relative_acceleration_sensor.a_rel": 9
+          }
+        }
+      }
+    }
+  }
+}
+end

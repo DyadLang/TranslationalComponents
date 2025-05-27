@@ -1,0 +1,16 @@
+# Prescribes the initial velocity to the associated connector
+component PrescribeInitialVelocity
+  flange = Flange() [{"Dyad": {"placement": {"icon": {"x1": -50, "y1": 450, "x2": 50, "y2": 550}}}}]
+  parameter v0::Velocity
+  variable v::Velocity
+relations
+  initial v = v0
+  der(flange.s) = v
+  flange.f = 0
+metadata {
+  "Dyad": {
+    "labels": [{"label": "initial v=$(v0)", "x": 500, "y": 800, "rot": 0}],
+    "icons": {"default": "dyad://TranslationalComponents/Position.svg"}
+  }
+}
+end

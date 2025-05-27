@@ -1,0 +1,16 @@
+# Ideal sensor to measure the power flowing from `flange_a` to `flange_b`
+component PowerSensor
+  extends PartialRelativeSensor
+  # Power in flange `flange_a` as output signal
+  power = RealOutput() [{
+    "Dyad": {
+      "placement": {"icon": {"x1": 450, "y1": 950, "x2": 550, "y2": 1050, "rot": 90}}
+    }
+  }]
+relations
+  flange_a.s = flange_b.s
+  power = flange_a.f*der(flange_a.s)
+metadata {
+  "Dyad": {"icons": {"default": "dyad://TranslationalComponents/RelativeSensor.svg"}}
+}
+end

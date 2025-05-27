@@ -1,0 +1,7 @@
+# Device to measure a single variable at `flange_b` relative to `flange_a`
+partial component PartialRelativeSensor
+  flange_a = Flange() [{"Dyad": {"placement": {"icon": {"x1": -50, "y1": 450, "x2": 50, "y2": 550}}}}]
+  flange_b = Flange() [{"Dyad": {"placement": {"icon": {"x1": 950, "y1": 450, "x2": 1050, "y2": 550}}}}]
+relations
+  0 = flange_a.f+flange_b.f
+end

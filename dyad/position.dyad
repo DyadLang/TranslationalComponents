@@ -1,0 +1,21 @@
+# Forced movement of a flange according to a reference position
+component Position
+  s_ref = RealInput() [{"Dyad": {"placement": {"icon": {"x1": -50, "y1": 450, "x2": 50, "y2": 550}}}}]
+  flange = Flange() [{"Dyad": {"placement": {"icon": {"x1": 950, "y1": 450, "x2": 1050, "y2": 550}}}}]
+  variable s::Length
+  parameter f_crit::Frequency = 0.0
+  # s coefficient of Bessel filter
+  final parameter af::Real = 1.3617
+  # s*s coefficient of Bessel filter
+  final parameter bf::Real = 0.6180
+  final parameter w_crit::Real = 2*π*f_crit
+  variable v::Velocity
+  variable a::Acceleration
+relations
+  initial s = s_ref
+  v = der(s)
+  a = der(v)
+  a = ((s_ref-s)*w_crit-af*v)*(w_crit/bf)
+  flange.s = s
+metadata {"Dyad": {"icons": {"default": "dyad://TranslationalComponents/Position.svg"}}}
+end

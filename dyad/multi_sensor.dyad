@@ -1,0 +1,28 @@
+# Ideal sensor that measures the absolute velocity, the force transmitted from
+# `flange_a` to `flange_b` and the power flowing from `flange_a` to `flange_b`.
+component MultiSensor
+  extends PartialRelativeSensor
+  # Power flowing from `flange_a` to `flange_b` as output signal
+  power = RealOutput() [{
+    "Dyad": {
+      "placement": {"icon": {"x1": 175, "y1": 950, "x2": 275, "y2": 1050, "rot": 90}}
+    }
+  }]
+  # Force transmitted from `flange_a` to `flange_b` as output signal
+  f = RealOutput() [{
+    "Dyad": {
+      "placement": {"icon": {"x1": 450, "y1": 950, "x2": 550, "y2": 1050, "rot": 90}}
+    }
+  }]
+  # Absolute velocity as output signal
+  v = RealOutput() [{
+    "Dyad": {
+      "placement": {"icon": {"x1": 725, "y1": 950, "x2": 825, "y2": 1050, "rot": 90}}
+    }
+  }]
+relations
+  flange_a.s = flange_b.s
+  f = flange_a.f
+  v = der(flange_a.s)
+  power = f*v
+end

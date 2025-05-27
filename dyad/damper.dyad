@@ -1,0 +1,11 @@
+# Linear 1D translational damper
+component Damper
+  extends PartialCompliantWithRelativeStates
+  parameter d::TranslationalDampingConstant
+  variable f::Dyad.Force
+  variable lossPower::Power
+relations
+  f = d*v_rel
+  lossPower = f*v_rel
+metadata {"Dyad": {"icons": {"default": "dyad://TranslationalComponents/Damper.svg"}}}
+end

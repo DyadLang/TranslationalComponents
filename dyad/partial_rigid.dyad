@@ -1,0 +1,12 @@
+# Rigid connection of two translational 1D flanges
+partial component PartialRigid
+  flange_a = Flange() [{"Dyad": {"placement": {"icon": {"x1": -50, "y1": 450, "x2": 50, "y2": 550}}}}]
+  flange_b = Flange() [{"Dyad": {"placement": {"icon": {"x1": 950, "y1": 450, "x2": 1050, "y2": 550}}}}]
+  # Absolute position of center of component
+  variable s::Dyad.Position
+  # Length of component, from left flange to right flange
+  parameter L::Length = 0.0
+relations
+  flange_a.s = s-L/2
+  flange_b.s = s+L/2
+end
