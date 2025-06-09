@@ -1,0 +1,9 @@
+# Fixes a flange position
+component Fixed
+  flange = Flange() [{"Dyad": {"placement": {"icon": {"x1": 400, "y1": -100, "x2": 600, "y2": 100}}}}]
+  # Fixed offset position
+  parameter s0::Dyad.Position = 0.0
+relations
+  flange.s = s0
+metadata {"Dyad": {"icons": {"default": "dyad://TranslationalComponents/Fixed.svg"}}}
+end

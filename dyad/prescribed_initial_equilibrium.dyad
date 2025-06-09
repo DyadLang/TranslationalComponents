@@ -1,0 +1,22 @@
+# Prescribes initial equilibrium state aka zero initial velocity and acceleration
+# to the associated connector.
+component PrescribeInitialEquilibrium
+  flange = Flange() [{"Dyad": {"placement": {"icon": {"x1": -50, "y1": 450, "x2": 50, "y2": 550}}}}]
+  variable v::Velocity
+  variable a::Acceleration
+relations
+  initial v = 0
+  initial a = 0
+  flange.f = 0
+  v = der(flange.s)
+  a = der(v)
+metadata {
+  "Dyad": {
+    "labels": [
+      {"label": "initial v = 0", "x": 500, "y": 150, "rot": 0},
+      {"label": "initial a = 0", "x": 500, "y": 800, "rot": 0}
+    ],
+    "icons": {"default": "dyad://TranslationalComponents/Position.svg"}
+  }
+}
+end

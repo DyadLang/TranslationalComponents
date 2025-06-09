@@ -1,0 +1,22 @@
+# A system with a Mass, Damper, Spring and a Fixed component
+test component MassDamperSpringFixedTest
+  damper = Damper(d=1)
+  spring = Spring(c=1)
+  body = Mass(m=1, L=0)
+  ground = Fixed()
+relations
+  connect(spring.flange_a, body.flange_a, damper.flange_a)
+  connect(spring.flange_b, damper.flange_b, ground.flange)
+metadata {
+  "Dyad": {
+    "tests": {
+      "case1": {
+        "stop": 20,
+        "initial": {"body.flange_b.s": 0, "damper.flange_b.f": 0},
+        "atol": {"body.v": 0.001},
+        "expect": {"final": {"body.v": 0}}
+      }
+    }
+  }
+}
+end

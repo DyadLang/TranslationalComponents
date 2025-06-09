@@ -1,0 +1,14 @@
+# Prescribes the initial position to the associated connector
+component PrescribeInitialPosition
+  flange = Flange() [{"Dyad": {"placement": {"icon": {"x1": -50, "y1": 450, "x2": 50, "y2": 550}}}}]
+  parameter s0::Dyad.Position
+relations
+  initial flange.s = s0
+  flange.f = 0
+metadata {
+  "Dyad": {
+    "labels": [{"label": "initial s = $(s0)", "x": 500, "y": 800, "rot": 0}],
+    "icons": {"default": "dyad://TranslationalComponents/Position.svg"}
+  }
+}
+end

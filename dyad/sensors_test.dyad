@@ -1,0 +1,35 @@
+# Tests for Position, Speed and Acceleration Absolute Sensors
+test component SensorsTest
+  body = Mass(m=1, L=0)
+  force = Force()
+  constant1 = BlockComponents.Constant(k=1)
+  ground = Fixed()
+  speed_sensor = SpeedSensor()
+  position_sensor = PositionSensor()
+  acceleration_sensor = AccelerationSensor()
+relations
+  connect(constant1.y, force.f)
+  connect(force.flange_b, body.flange_a)
+  connect(force.flange_a, ground.flange)
+  connect(body.flange_b, speed_sensor.flange, position_sensor.flange, acceleration_sensor.flange)
+metadata {
+  "Dyad": {
+    "tests": {
+      "case1": {
+        "stop": 5,
+        "initial": {"body.s": 0},
+        "expect": {
+          "final": {
+            "body.s": 12.49999999,
+            "body.v": 4.99999999,
+            "body.a": 1,
+            "position_sensor.s": 12.49999999,
+            "speed_sensor.v": 4.99999999,
+            "acceleration_sensor.a": 1
+          }
+        }
+      }
+    }
+  }
+}
+end

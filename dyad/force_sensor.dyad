@@ -1,0 +1,16 @@
+# Ideal sensor to measure the force transmitted from `flange_a` to `flange_b`
+component ForceSensor
+  extends PartialRelativeSensor
+  # Force transmitted from `flange_a` to `flange_b` as output signal
+  f = RealOutput() [{
+    "Dyad": {
+      "placement": {"icon": {"x1": 450, "y1": 950, "x2": 550, "y2": 1050, "rot": 90}}
+    }
+  }]
+relations
+  flange_a.s = flange_b.s
+  flange_a.f = f
+metadata {
+  "Dyad": {"icons": {"default": "dyad://TranslationalComponents/RelativeSensor.svg"}}
+}
+end

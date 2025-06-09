@@ -1,0 +1,11 @@
+# Linear 1D translational spring
+component Spring
+  extends PartialCompliant
+  # Spring Constant
+  parameter c::TranslationalSpringConstant
+  # Unstretched spring length
+  parameter s_rel0::Distance = 0
+relations
+  f = c*(s_rel-s_rel0)
+metadata {"Dyad": {"icons": {"default": "dyad://TranslationalComponents/Spring.svg"}}}
+end

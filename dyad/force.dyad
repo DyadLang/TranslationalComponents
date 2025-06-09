@@ -1,0 +1,16 @@
+# Input signal acting as force on two flanges
+#
+# The input signal to this component is the force imposed by the component.  A positive value for the
+# input signal represents the transfer of a positive linear momentum from `flange_a` to `flange_b.  In
+# other words, a positive value will act to increase the linear momentum of whatever is connected
+# at `flange_b` and decrease the linear momentum of whatever is connected at `flange_a`.
+component Force
+  extends PartialTwoFlanges
+  f = RealInput() [{
+    "Dyad": {"placement": {"icon": {"x1": 450, "y1": 100, "x2": 550, "y2": 200, "rot": 90}}}
+  }]
+relations
+  flange_a.f = f
+  flange_b.f = -f
+metadata {"Dyad": {"icons": {"default": "dyad://TranslationalComponents/Force.svg"}}}
+end

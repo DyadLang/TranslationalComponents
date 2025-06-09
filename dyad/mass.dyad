@@ -1,0 +1,19 @@
+# Sliding mass with inertia
+component Mass
+  extends PartialRigid
+  # Mass of the sliding mass
+  parameter m::Dyad.Mass
+  # Absolute velocity of component
+  variable v::Velocity
+  # Absolute acceleration of component
+  variable a::Acceleration
+  # Gravity (defaults to standard acceleration of gravity)
+  parameter g::Acceleration = -9.80665
+  # Angle of motion w.r.t. gravity, 0 = horizontal, pi / 2 = vertical with gravity pulling backward
+  parameter theta::Angle = 0.0
+relations
+  v = der(s)
+  a = der(v)
+  m*(a+g*sin(theta)) = flange_a.f+flange_b.f
+metadata {"Dyad": {"icons": {"default": "dyad://TranslationalComponents/Mass.svg"}}}
+end

@@ -1,0 +1,10 @@
+# Linear 1D position input sensor.
+component PositionSensor
+  extends PartialAbsoluteSensor
+  s = RealOutput() [{"Dyad": {"placement": {"icon": {"x1": 950, "y1": 450, "x2": 1050, "y2": 550}}}}]
+relations
+  flange.s = s
+metadata {
+  "Dyad": {"icons": {"default": "dyad://TranslationalComponents/AbsoluteSensor.svg"}}
+}
+end

@@ -1,0 +1,6 @@
+# Device to measure a single absolute flange variable
+partial component PartialAbsoluteSensor
+  flange = Flange() [{"Dyad": {"placement": {"icon": {"x1": -50, "y1": 450, "x2": 50, "y2": 550}}}}]
+relations
+  0 = flange.f
+end

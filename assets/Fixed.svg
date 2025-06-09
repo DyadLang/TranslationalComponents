@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="a" viewBox="0 0 1000 1000">
+  <defs>
+    <style>
+      .b,.c,.d{fill:none;stroke:#443d4a;stroke-width:8px}.b{stroke-linejoin:round}.c,.d{stroke-linecap:square}.c{stroke-miterlimit:10}.d{stroke-linejoin:bevel}.e,.f{fill:#42cc33;stroke-width:0}.f{fill:#fff}
+    </style>
+  </defs>
+  <path d="M4 4h992v992H4z" class="f"/>
+  <path d="M992 8v984H8V8zm8-8H0v1000h1000z" class="e"/>
+  <path d="M500 6.21v494.06" class="b"/>
+  <path d="M751.24 702.09 849.66 500H150.8" class="d"/>
+  <path d="M149.95 702.09 248.37 501m102.01 201.09L448.8 501m102.01 201.09L649.23 501" class="c"/>
+  <path d="M4 4h992v992H4z" class="f"/>
+  <path d="M992 8v984H8V8zm8-8H0v1000h1000z" class="e"/>
+  <path d="M500 6.21v494.06" class="b"/>
+  <path d="M751.24 702.09 849.66 500H150.8" class="d"/>
+  <path d="M149.95 702.09 248.37 501m102.01 201.09L448.8 501m102.01 201.09L649.23 501" class="c"/>
+</svg>

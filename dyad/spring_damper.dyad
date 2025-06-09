@@ -1,0 +1,22 @@
+# Linear 1D translational spring and damper in parallel
+component SpringDamper
+  extends PartialCompliantWithRelativeStates
+  # Spring constant
+  parameter c::TranslationalSpringConstant
+  # Damping constant
+  parameter d::TranslationalDampingConstant
+  # Unstretched spring length
+  variable initial_stretch::Length(guess=0)
+  variable lossPower::Power
+  variable f_c::Dyad.Force
+  variable f_d::Dyad.Force
+relations
+  f_c = c*(s_rel-initial_stretch)
+  der(initial_stretch) = 0
+  f_d = d*v_rel
+  f = f_c+f_d
+  lossPower = f_d*v_rel
+metadata {
+  "Dyad": {"icons": {"default": "dyad://TranslationalComponents/SpringDamper.svg"}}
+}
+end

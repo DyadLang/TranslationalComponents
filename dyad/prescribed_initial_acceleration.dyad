@@ -1,0 +1,16 @@
+# Prescribes the initial acceleration to the associated connector
+component PrescribeInitialAcceleration
+  flange = Flange() [{"Dyad": {"placement": {"icon": {"x1": -50, "y1": 450, "x2": 50, "y2": 550}}}}]
+  parameter a0::Acceleration
+  variable a::Acceleration
+relations
+  initial a = a0
+  der(der(flange.s)) = a
+  flange.f = 0
+metadata {
+  "Dyad": {
+    "labels": [{"label": "initial a=$(a0)", "x": 500, "y": 800, "rot": 0}],
+    "icons": {"default": "dyad://TranslationalComponents/Position.svg"}
+  }
+}
+end

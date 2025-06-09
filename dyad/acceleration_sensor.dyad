@@ -1,0 +1,14 @@
+# Ideal sensor to measure the absolute acceleration of flange
+component AccelerationSensor
+  extends PartialAbsoluteSensor
+  # Absolute acceleration of flange as output signal
+  a = RealOutput() [{"Dyad": {"placement": {"icon": {"x1": 950, "y1": 450, "x2": 1050, "y2": 550}}}}]
+  # Absolute velocity of flange
+  variable v::Velocity
+relations
+  v = der(flange.s)
+  a = der(v)
+metadata {
+  "Dyad": {"icons": {"default": "dyad://TranslationalComponents/AbsoluteSensor.svg"}}
+}
+end
